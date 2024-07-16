@@ -16,14 +16,14 @@ export default {
 
     if (request.method === "POST") {
       const reqBody = await readRequestBody(request);
-      const openai = new OpenAI({
-        apiKey: env.OPENAI_API_KEY,
-      });
 
       try {
         if (!env.OPENAI_API_KEY) {
           throw new Error("Missing OPENAI_API_KEY");
         }
+        const openai = new OpenAI({
+          apiKey: env.OPENAI_API_KEY,
+        });
         if (
           !reqBody ||
           !reqBody.messages ||
